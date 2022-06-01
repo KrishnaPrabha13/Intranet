@@ -32,6 +32,7 @@ public class Seat {
 	private String status;
 	
 	
+	@DateTimeFormat
 	private Date fromDate;
 	
 	

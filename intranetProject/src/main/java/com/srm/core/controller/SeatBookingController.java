@@ -31,9 +31,9 @@ public class SeatBookingController {
 	@PostMapping("/booking/postBooking")
 	public ResponseEntity<?> create(@RequestBody SeatBooking seatBooking){
 	try {
-//		Date createdate = new Date();
-//		seatBooking.setCreateDate(createdate);
-		//seatBooking.setModifiedDate(null);
+		Date createdate = new Date();
+		seatBooking.setCreateDate(createdate);
+		seatBooking.setModifiedDate(null);
 		seatBookingService.create(seatBooking);
 		return new ResponseEntity<>("seat booked", HttpStatus.CREATED);
 		} catch ( Exception e) {

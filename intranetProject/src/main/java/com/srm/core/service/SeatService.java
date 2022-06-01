@@ -36,10 +36,10 @@ public class SeatService {
 	public Optional<Seat> getBySeatNo(String seatNo){
 		return seatRepository.findById(seatNo);
 	}
+	public List<Seat> getSeats(String dept,Date date){
+		return seatRepository.findSeat(dept,date);
+	}
 	
-//	public List<Seat> getByDate(Date fromDate){
-//		return seatRepository.findByDate(fromDate);
-//	}
 }
 
 

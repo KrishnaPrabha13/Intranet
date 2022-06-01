@@ -31,7 +31,7 @@ public class SeatController {
 	private SeatService seatService;
 	
 	@PostMapping("/seats/postSeat")
-	public ResponseEntity<?> create(@RequestBody Seat seat,@RequestParam(required = false) Date fromDate){
+	public ResponseEntity<?> create(@RequestBody Seat seat,@RequestParam Date fromDate){
 	try {
 //		String pattern = "DD/MM/YYYY";
 //		DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
@@ -75,14 +75,19 @@ public class SeatController {
 //		return new ResponseEntity<Optional<Seat>>(seat,HttpStatus.OK);
 //	}
 	@GetMapping("/seats/getSeats")
-	public ResponseEntity<?> getAllSeats(@RequestParam(required = false) String seatNo, @RequestParam(required = false)String status, @RequestParam(required = false)String dept,@RequestParam(required = false)Date fromDate){
-		System.out.println(fromDate);
+	public ResponseEntity<?> getAllSeats(@RequestParam(required = false) String seatNo, @RequestParam(required = false)String status, @RequestParam(required = false)String dept,@RequestParam(required = false)Date date){
+		System.out.println(status+dept+date);
 		if(dept==null) {
 			List<Seat> seats = seatService.getAllSeats();
 			return new ResponseEntity<List<Seat>>(seats,HttpStatus.OK);
 		}
+		else if(date==null) {
 		List<Seat> seat = seatService.getAllByDept(dept);
 		return new ResponseEntity<List<Seat>>(seat,HttpStatus.OK);
+		}else {
+		List<Seat> seat1 = seatService.getSeats(dept,date);
+		return new ResponseEntity<List<Seat>>(seat1,HttpStatus.OK);
+		}
 	
 	}
 }

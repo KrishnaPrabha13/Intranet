@@ -18,9 +18,9 @@ public interface SeatRepository extends MongoRepository<Seat, String> {
 	
 	public List<Seat> findSeatByDept(String dept);
 	
-	//public List<Seat> findByDate(Date fromDate);
-	
 
+	
+	public List<Seat> findSeat(String dept,Date date);
 
 	
 }
